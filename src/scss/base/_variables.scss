@@ -1,0 +1,13 @@
+:root {
+  --header-color: #0b0b0b;
+  --accent-color-primary: #0078f2;
+  --text-color-primary: #ffffff;
+  --text-color-secondary: #aaaaae;
+  --col-gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --padding-inline: 1.5rem;
+  }
+}

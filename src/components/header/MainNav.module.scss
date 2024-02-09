@@ -1,0 +1,370 @@
+.nav {
+  z-index: 1;
+
+  @media (min-width: 1280px) {
+    transition-duration: 0.3s;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+    align-items: center;
+    display: flex;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    display: flex;
+    column-gap: 2rem;
+
+    li {
+      --main-nav-mobile-offset: -2.5rem;
+      align-items: center;
+      display: flex;
+      width: 100%;
+
+      .subNavLinks {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        @media (min-width: 768px) {
+          max-width: 13.125rem;
+        }
+
+        @media (min-width: 1280px) {
+          flex: 1 1 0%;
+        }
+
+        div {
+          a {
+            appearance: none;
+            background-color: transparent;
+            border: 0px;
+            font-family: inherit;
+            font-size: inherit;
+            padding: 0px;
+            transition: color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+              background-color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizelegibility;
+            --link-block-padding: 0.25rem;
+            align-items: center;
+            border-radius: 0.5rem;
+            box-sizing: border-box;
+            color: var(--color-text-secondary, #aaaaae);
+            display: flex;
+            justify-content: space-between;
+            margin-block: calc(var(--link-block-padding) * -1);
+            margin-inline: calc(var(--link-inline-padding) * -1);
+            min-height: 2rem;
+            padding-block: var(--link-block-padding);
+            padding-inline: var(--link-inline-padding);
+            position: relative;
+            text-decoration: none;
+            user-select: none;
+            z-index: 3;
+            --link-inline-padding: 0.5rem;
+
+            &:hover {
+              background-color: #404044;
+              color: #e6e6ea;
+            }
+
+            &:not(:disabled) {
+              cursor: pointer;
+            }
+
+            .content {
+              align-items: start;
+              display: flex;
+              flex-direction: column;
+              flex-grow: 1;
+              pointer-events: none;
+
+              .label {
+                font-family: Inter, sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 165%;
+                font-size: 1rem;
+                color: var(--accent-color-primary);
+                letter-spacing: 0.02em;
+                flex-grow: 1;
+              }
+            }
+          }
+        }
+      }
+
+      .link {
+        display: block;
+        position: relative;
+        width: 100%;
+
+        a {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          background-color: transparent;
+          border: 0;
+          color: inherit;
+          font-family: inherit;
+          font-size: inherit;
+          padding: 0;
+          transition: color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+            background-color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+          -webkit-font-smoothing: antialiased;
+          text-rendering: optimizeLegibility;
+          --link-block-padding: 0.25rem;
+          --link-inline-padding: 1rem;
+          align-items: center;
+          border-radius: 0.5rem;
+          box-sizing: border-box;
+          color: var(--color-text-secondary, #aaaaae);
+          display: flex;
+          justify-content: space-between;
+          margin-block: calc(var(--link-block-padding) * -1);
+          margin-inline: calc(var(--link-inline-padding) * -1);
+          min-height: 2rem;
+          padding-block: var(--link-block-padding);
+          padding-inline: var(--link-inline-padding);
+          position: relative;
+          text-decoration: none;
+          -webkit-user-select: none;
+          user-select: none;
+          z-index: 3;
+
+          &:not(:disabled) {
+            cursor: pointer;
+          }
+
+          &.active {
+            background-color: #404044;
+            color: #e6e6ea;
+          }
+
+          &:hover {
+            background-color: #404044;
+            color: #e6e6ea;
+          }
+
+          span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-family: Inter, sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 150%;
+            font-size: 0.875rem;
+            letter-spacing: 0.02em;
+            flex-grow: 1;
+          }
+        }
+      }
+
+      .boxZone {
+        position: absolute;
+        margin-left: auto;
+        margin-right: auto;
+        top: 100%; /* Adjust this to align with the bottom of your dropdown trigger */
+        height: 50px; /* Height should cover the gap. Adjust as necessary. */
+        z-index: 1; /* May need adjustment based on your specific layout */
+        pointer-events: auto; /* Keep this to ensure it can trigger hover events */
+        visibility: visible; /* Consider changing this if you need it to interact with hover events */
+        background-color: transparent; /* Ensures it's not visually noticeable */
+
+        @media (min-width: 768px) {
+          width: 13.125rem;
+        }
+
+        @media (min-width: 1280px) {
+          width: 28.75rem;
+        }
+      }
+
+      .megaNav {
+        &:not(.open) {
+          opacity: 0;
+          list-style: none;
+          visibility: hidden;
+        }
+
+        @media (min-width: 1280px) {
+          inset-inline-start: 0px;
+          inset-block-start: 4.25rem;
+          position: absolute;
+        }
+
+        .subNav {
+          align-items: stretch;
+          background: #202024;
+          border-radius: 1rem;
+          box-sizing: border-box;
+          gap: 2rem 1rem;
+          display: flex;
+          flex-direction: column;
+          padding-block: 2rem;
+          padding-inline: 2rem;
+
+          hr {
+            background-color: #303034;
+            border: none;
+            flex-shrink: 0;
+            height: 0.125rem;
+            margin-block: -0.0625rem;
+            margin-inline: 0px;
+            width: 100%;
+
+            @media (min-width: 768px) {
+              height: auto;
+              margin-inline: -0.0625rem;
+              width: 0.125rem;
+            }
+          }
+
+          @media (min-width: 768px) {
+            flex-direction: row;
+            gap: 2.5rem;
+            padding-block: 2.5rem;
+            padding-inline: 2.5rem;
+          }
+
+          @media (min-width: 1280px) {
+            width: 67.5rem;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 32px 16px,
+              rgba(0, 0, 0, 0.1) 0px 16px 8px, rgba(0, 0, 0, 0.1) 0px 8px 4px,
+              rgba(0, 0, 0, 0.1) 0px 4px 2px, rgba(0, 0, 0, 0.1) 0px 2px 1px;
+          }
+
+          .col {
+            gap: 1.5rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+
+            @media (min-width: 768px) {
+              max-width: 13.125rem;
+            }
+
+            @media (min-width: 1280px) {
+              flex-grow: 1;
+              flex-shrink: 0;
+              flex-direction: row;
+              max-width: 28.75rem;
+            }
+
+            .text {
+              @media (min-width: 1280px) {
+                flex: 1 1 0%;
+              }
+
+              align-items: flex-start;
+              color: #e6e6ea;
+              display: flex;
+              flex-direction: column;
+              gap: 0.75rem;
+
+              h3 {
+                font-family: "Inter Tight", sans-serif;
+                font-style: normal;
+                font-weight: 700;
+                font-size: 1.5rem;
+                line-height: 1.75rem;
+                margin-block: 0px;
+                color: #e6e6ea;
+                margin-inline: 0px;
+              }
+
+              p {
+                font-family: Inter, sans-serif;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 150%;
+                font-size: 0.875rem;
+                color: #e6e6ea;
+                letter-spacing: 0.02em;
+                margin-block: 0px;
+                margin-inline: 0px;
+              }
+            }
+
+            .subNavLinks {
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+
+              @media (min-width: 768px) {
+                max-width: 13.125rem;
+              }
+
+              @media (min-width: 1280px) {
+                flex: 1 1 0%;
+              }
+
+              div {
+                a {
+                  appearance: none;
+                  background-color: transparent;
+                  border: 0px;
+                  font-family: inherit;
+                  font-size: inherit;
+                  padding: 0px;
+                  transition: color 0.2s cubic-bezier(0.65, 0, 0.35, 1),
+                    background-color 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+                  -webkit-font-smoothing: antialiased;
+                  text-rendering: optimizelegibility;
+                  --link-block-padding: 0.25rem;
+                  align-items: center;
+                  border-radius: 0.5rem;
+                  box-sizing: border-box;
+                  color: var(--color-text-secondary, #aaaaae);
+                  display: flex;
+                  justify-content: space-between;
+                  margin-block: calc(var(--link-block-padding) * -1);
+                  margin-inline: calc(var(--link-inline-padding) * -1);
+                  min-height: 2rem;
+                  padding-block: var(--link-block-padding);
+                  padding-inline: var(--link-inline-padding);
+                  position: relative;
+                  text-decoration: none;
+                  user-select: none;
+                  z-index: 3;
+                  --link-inline-padding: 0.5rem;
+
+                  &:hover {
+                    background-color: #404044;
+                    color: #e6e6ea;
+                  }
+
+                  &:not(:disabled) {
+                    cursor: pointer;
+                  }
+
+                  .content {
+                    align-items: start;
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow: 1;
+                    pointer-events: none;
+
+                    .label {
+                      font-family: Inter, sans-serif;
+                      font-style: normal;
+                      font-weight: 400;
+                      line-height: 165%;
+                      font-size: 1rem;
+                      color: var(--accent-color-primary);
+                      letter-spacing: 0.02em;
+                      flex-grow: 1;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
